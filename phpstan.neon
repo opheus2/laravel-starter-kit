@@ -1,7 +1,7 @@
 parameters:
     paths:
         - app
-    level: 7
+    level: 8
     ignoreErrors:
 #        - '#Access to an undefined property App\\Http\\Resources\\[a-zA-Z0-9::a-zA-Z]#'
     typeAliases:
