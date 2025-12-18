@@ -1,0 +1,12 @@
+parameters:
+    paths:
+        - app
+    level: 7
+    ignoreErrors:
+#        - '#Access to an undefined property App\\Http\\Resources\\[a-zA-Z0-9::a-zA-Z]#'
+    typeAliases:
+        ValidationRules: 'array<string, array<\Illuminate\Contracts\Validation\Rule|\Illuminate\Contracts\Validation\ValidationRule|string>|array<mixed>|string>'
+    excludePaths:
+        - vendor (?)
+        - node_modules (?)
+#    checkMissingIterableValueType: false
