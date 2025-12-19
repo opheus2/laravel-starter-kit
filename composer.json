@@ -26,6 +26,7 @@
         "laravel/pint": "^1.26",
         "laravel/sail": "^1.51",
         "mockery/mockery": "^1.6.12",
+        "mrpunyapal/rector-pest": "^0.1.3",
         "nunomaduro/collision": "^8.8.3",
         "pestphp/pest": "^4.2",
         "pestphp/pest-plugin-laravel": "^4.0",

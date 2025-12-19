@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use RectorPest\Set\PestSetList;
 use Rector\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\SetList;
 use RectorLaravel\Set\LaravelLevelSetList;
@@ -10,9 +11,11 @@ use RectorLaravel\Rector\If_\ThrowIfRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
 use RectorLaravel\Rector\MethodCall\WhereToWhereLikeRector;
+use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use Rector\CodeQuality\Rector\FuncCall\CompactToVariablesRector;
 use RectorLaravel\Rector\Empty_\EmptyToBlankAndFilledFuncRector;
+use Rector\CodingStyle\Rector\Use_\SeparateMultiUseImportsRector;
 use RectorLaravel\Rector\StaticCall\MinutesToSecondsInCacheRector;
 use RectorLaravel\Rector\MethodCall\UnaliasCollectionMethodsRector;
 use RectorLaravel\Rector\MethodCall\AssertStatusToAssertMethodRector;
@@ -23,6 +26,7 @@ use RectorLaravel\Rector\Expr\AppEnvironmentComparisonToParameterRector;
 use RectorLaravel\Rector\MethodCall\ConvertEnumerableToArrayToAllRector;
 use RectorLaravel\Rector\PropertyFetch\OptionalToNullsafeOperatorRector;
 use RectorLaravel\Rector\Coalesce\ApplyDefaultInsteadOfNullCoalesceRector;
+use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
 use RectorLaravel\Rector\Class_\AddExtendsAnnotationToModelFactoriesRector;
 use RectorLaravel\Rector\ClassMethod\AddGenericReturnTypeToRelationsRector;
 use RectorLaravel\Rector\ClassMethod\AddParentBootToModelClassMethodRector;
@@ -94,6 +98,9 @@ return static function (RectorConfig $rectorConfig): void {
         UseComponentPropertyWithinCommandsRector::class,
         ValidationRuleArrayStringValueToArrayRector::class,
         // WhereToWhereLikeRector::USING_POSTGRES_DRIVER => true
+        NewlineAfterStatementRector::class,
+        // SeparateMultiUseImportsRector::class,
+        NewlineBetweenClassLikeStmtsRector::class,
     ]);
 
     // Enable caching for Rector
@@ -109,7 +116,9 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PHP_83,
         SetList::PHP_84,
         SetList::EARLY_RETURN,
+        SetList::TYPE_DECLARATION_DOCBLOCKS,
         SetList::STRICT_BOOLEANS,
+        PestSetList::PEST_CODE_QUALITY,
     ]);
 
     // Define PHP version for Rector
