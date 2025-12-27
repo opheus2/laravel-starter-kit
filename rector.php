@@ -11,6 +11,7 @@ use RectorLaravel\Rector\If_\ThrowIfRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
 use RectorLaravel\Rector\MethodCall\WhereToWhereLikeRector;
+use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
 use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use Rector\CodeQuality\Rector\FuncCall\CompactToVariablesRector;
@@ -61,6 +62,7 @@ return static function (RectorConfig $rectorConfig): void {
     // Skip specific rules
     $rectorConfig->skip([
         CompactToVariablesRector::class,
+        RemoveExtraParametersRector::class,
     ]);
 
     $rectorConfig->rules([
@@ -117,7 +119,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PHP_84,
         SetList::EARLY_RETURN,
         SetList::TYPE_DECLARATION_DOCBLOCKS,
-        SetList::STRICT_BOOLEANS,
         PestSetList::PEST_CODE_QUALITY,
     ]);
 
