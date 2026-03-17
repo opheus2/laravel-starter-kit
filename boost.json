@@ -4,11 +4,15 @@
         "copilot",
         "cursor",
         "gemini",
-        "phpstorm"
+        "claude_code"
     ],
-    "editors": [
-        "codex",
-        "vscode"
+    "guidelines": true,
+    "packages": [
+        "filament/filament"
     ],
-    "guidelines": true
+    "skills": [
+        "livewire-development",
+        "pest-testing",
+        "tailwindcss-development"
+    ]
 }
