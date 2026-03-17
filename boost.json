@@ -10,7 +10,5 @@
         "codex",
         "vscode"
     ],
-    "guidelines": [
-        "filament/filament"
-    ]
+    "guidelines": true
 }
