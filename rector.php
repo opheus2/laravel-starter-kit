@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use RectorPest\Set\PestSetList;
+use Pest\Rector\Set\PestSetList;
 use Rector\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\SetList;
 use RectorLaravel\Set\LaravelLevelSetList;
@@ -49,6 +49,9 @@ use RectorLaravel\Rector\StaticCall\ReplaceAssertTimesSendWithAssertSentTimesRec
 use RectorLaravel\Rector\PropertyFetch\ReplaceFakerPropertyFetchWithMethodCallRector;
 
 return static function (RectorConfig $rectorConfig): void {
+    // Use composer-based configuration
+    $rectorConfig->configure()->withComposerBased(laravel: true);
+
     // Paths to analyze
     $rectorConfig->paths([
         __DIR__ . '/app',
@@ -111,15 +114,13 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Apply sets for Laravel and general code quality
     $rectorConfig->sets([
-        LaravelLevelSetList::UP_TO_LARAVEL_120,
         SetList::DEAD_CODE,
         SetList::CODE_QUALITY,
         SetList::TYPE_DECLARATION,
-        SetList::PHP_83,
         SetList::PHP_84,
         SetList::EARLY_RETURN,
         SetList::TYPE_DECLARATION_DOCBLOCKS,
-        PestSetList::PEST_CODE_QUALITY,
+        PestSetList::CODING_STYLE,
     ]);
 
     // Define PHP version for Rector
