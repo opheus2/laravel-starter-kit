@@ -1,5 +1,5 @@
 services:
-    laravel.test:
+    laravel.test: # you can change this to match anyname you prefer just ensure to set APP_SERVICE=name accordingly
         build:
             context: './docker/8.5'
             dockerfile: Dockerfile
@@ -8,6 +8,8 @@ services:
         image: 'sail-8.5/app'
         extra_hosts:
             - 'host.docker.internal:host-gateway'
+        labels:
+            - dev.orbstack.domains=starterkit.local,*.starterkit.local
         ports:
             - '${APP_PORT:-80}:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
@@ -23,7 +25,7 @@ services:
             - sail
         depends_on:
             - pgsql
-            - valkey
+            - redis
             - mailpit
     pgsql:
         image: 'postgres:18-alpine'
@@ -50,12 +52,12 @@ services:
                 - '${DB_USERNAME}'
             retries: 3
             timeout: 5s
-    valkey:
+    redis:
         image: 'valkey/valkey:alpine'
         ports:
-            - '${FORWARD_VALKEY_PORT:-6379}:6379'
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
-            - 'sail-valkey:/data'
+            - 'sail-redis:/data'
         networks:
             - sail
         healthcheck:
@@ -78,5 +80,5 @@ networks:
 volumes:
     sail-pgsql:
         driver: local
-    sail-valkey:
+    sail-redis:
         driver: local
