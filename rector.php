@@ -6,7 +6,6 @@ use Rector\Config\RectorConfig;
 use Pest\Rector\Set\PestSetList;
 use Rector\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\SetList;
-use RectorLaravel\Set\LaravelLevelSetList;
 use RectorLaravel\Rector\If_\ThrowIfRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
